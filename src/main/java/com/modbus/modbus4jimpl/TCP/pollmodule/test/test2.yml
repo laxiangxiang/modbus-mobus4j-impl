@@ -1,0 +1,12 @@
+#!!com.modbus.client.modbus4jmaster.modbus4j.TCP.pollmodule.test.TestProperties
+tcpMasters:
+- host: localhost
+  port: 501
+  subscribeList:
+  - {nodeName: function01Test,slaveId: 1}
+  - {nodeName: function01Test,slaveId: 1}
+- host: localhost
+  port: 502
+  subscribeList:
+  - {nodeName: function01Test,slaveId: 1}
+  - {nodeName: function01Test,slaveId: 1}

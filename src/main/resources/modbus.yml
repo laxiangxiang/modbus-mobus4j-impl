@@ -1,0 +1,25 @@
+tcpMasters:
+- host: 127.0.0.1
+  port: 502
+  #模拟slave软件测试要配置为false，否则报错
+  encapsulated: false
+  keepAlive: true
+  timeout: 2000
+  retries: 0
+  subscribeList:
+  - {nodeName: function01test,slaveId: 1,offset: 0, functionId: 01,numberOfBits: 1,
+    listenerPath: com.modbus.modbus4jimpl.TCP.pollmodule.test.listener.,
+    listenerName: function01TestListener,publishRate: 1000
+  }
+  - {nodeName: function02test,slaveId: 2,offset: 0, functionId: 02,numberOfBits: 2,
+    listenerPath: com.modbus.modbus4jimpl.TCP.pollmodule.test.listener.,
+    listenerName: function02TestListener,publishRate: 1000
+  }
+  - {nodeName: function03test,slaveId: 3,offset: 0, functionId: 03,numberOfBits: 1,
+    listenerPath: com.modbus.modbus4jimpl.TCP.pollmodule.test.listener.,
+    listenerName: function03TestListener,publishRate: 1000
+  }
+  - {nodeName: function04test,slaveId: 4,offset: 0, functionId: 04,numberOfBits: 2,
+    listenerPath: com.modbus.modbus4jimpl.TCP.pollmodule.test.listener.,
+    listenerName: function04TestListener,publishRate: 1000
+  }
