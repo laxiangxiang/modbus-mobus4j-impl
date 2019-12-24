@@ -1,5 +1,6 @@
-package com.modbus.modbus4jimpl.TCP.masterAndSlave.master;
+package com.modbus.modbus4jimpl.TCP.masterAndSlave.master.request;
 
+import com.modbus.modbus4jimpl.TCP.masterAndSlave.master.TcpMaster;
 import com.serotonin.modbus4j.ModbusMaster;
 import com.serotonin.modbus4j.exception.ErrorResponseException;
 import com.serotonin.modbus4j.exception.ModbusInitException;
@@ -8,7 +9,6 @@ import com.serotonin.modbus4j.locator.BaseLocator;
 import com.serotonin.modbus4j.msg.*;
 import org.springframework.stereotype.Component;
 
-@Component
 public class Modbus4jWriteUtils {
     // 获取Master
     private static ModbusMaster tcpMaster = TcpMaster.getMaster();
@@ -21,7 +21,7 @@ public class Modbus4jWriteUtils {
      * @param writeValue  值
      * @return 是否写入成功
      */
-    public boolean writeCoil(int slaveId, int writeOffset, boolean writeValue)
+    public static boolean writeCoil(int slaveId, int writeOffset, boolean writeValue)
             throws ModbusTransportException, ModbusInitException {
         // 创建请求
         WriteCoilRequest request = new WriteCoilRequest(slaveId, writeOffset, writeValue);
@@ -38,7 +38,7 @@ public class Modbus4jWriteUtils {
      * @param bdata       写入的数据
      * @return 是否写入成功
      */
-    public boolean writeCoils(int slaveId, int startOffset, boolean[] bdata)
+    public static boolean writeCoils(int slaveId, int startOffset, boolean[] bdata)
             throws ModbusTransportException, ModbusInitException {
         // 创建请求
         WriteCoilsRequest request = new WriteCoilsRequest(slaveId, startOffset, bdata);
@@ -73,7 +73,7 @@ public class Modbus4jWriteUtils {
      * @param sdata       写入的数据
      * @return 返回是否写入成功
      */
-    public boolean writeRegisters(int slaveId, int startOffset, short[] sdata)
+    public static boolean writeRegisters(int slaveId, int startOffset, short[] sdata)
             throws ModbusTransportException, ModbusInitException {
         // 创建请求对象
         WriteRegistersRequest request = new WriteRegistersRequest(slaveId, startOffset, sdata);
@@ -88,7 +88,7 @@ public class Modbus4jWriteUtils {
      * @param value    写入值
      * @param dataType com.serotonin.modbus4j.code.DataType
      */
-    public void writeHoldingRegister(int slaveId, int offset, Number value, int dataType)
+    public static void writeHoldingRegister(int slaveId, int offset, Number value, int dataType)
             throws ModbusTransportException, ErrorResponseException, ModbusInitException {
         // 类型
         BaseLocator<Number> locator = BaseLocator.holdingRegister(slaveId, offset, dataType);

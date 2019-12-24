@@ -24,7 +24,7 @@ import java.util.Map;
  * 否则看具体情况配置。
  */
 @Slf4j
-@Configuration
+//@Configuration
 public class TCPMasterConfig {
 
     private static List<MonitoredDataItem> items = new ArrayList<>();

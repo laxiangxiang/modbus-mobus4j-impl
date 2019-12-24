@@ -23,7 +23,10 @@ public class TcpMaster {
         IpParameters params = new IpParameters();
         params.setHost("localhost");
         params.setPort(502);
+        //自己实现slave端时设置
         params.setEncapsulated(true);
+        //使用slave模拟软件时设置
+//        params.setEncapsulated(false);
         ModbusMaster master = modbusFactory.createTcpMaster(params, false);// TCP 协议
         try {
             //设置超时时间

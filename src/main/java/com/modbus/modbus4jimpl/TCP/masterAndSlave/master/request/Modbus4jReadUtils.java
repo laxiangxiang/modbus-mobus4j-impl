@@ -1,5 +1,6 @@
-package com.modbus.modbus4jimpl.TCP.masterAndSlave.master;
+package com.modbus.modbus4jimpl.TCP.masterAndSlave.master.request;
 
+import com.modbus.modbus4jimpl.TCP.masterAndSlave.master.TcpMaster;
 import com.serotonin.modbus4j.BatchRead;
 import com.serotonin.modbus4j.BatchResults;
 import com.serotonin.modbus4j.ModbusMaster;
@@ -8,9 +9,7 @@ import com.serotonin.modbus4j.exception.ErrorResponseException;
 import com.serotonin.modbus4j.exception.ModbusTransportException;
 import com.serotonin.modbus4j.locator.BaseLocator;
 import com.serotonin.modbus4j.msg.*;
-import org.springframework.stereotype.Component;
 
-@Component
 public class Modbus4jReadUtils {
 
     //获取master
@@ -24,7 +23,7 @@ public class Modbus4jReadUtils {
      * @param numberOfBits 读几个地址位
      * @return 读取值
      */
-    public boolean[] readCoilStatus(int slaveId, int offset, int numberOfBits) throws ModbusTransportException {
+    public static boolean[] readCoilStatus(int slaveId, int offset, int numberOfBits) throws ModbusTransportException {
         ReadCoilsRequest request = new ReadCoilsRequest(slaveId, offset, numberOfBits);
         ReadCoilsResponse response = (ReadCoilsResponse) master.send(request);
         boolean[] booleans = response.getBooleanData();
@@ -49,7 +48,7 @@ public class Modbus4jReadUtils {
      * @param offset  位置
      * @param numberOfBits 读几个地址位
      */
-    public short[] readHoldingRegister(int slaveId, int offset, int numberOfBits) throws ModbusTransportException {
+    public static short[] readHoldingRegister(int slaveId, int offset, int numberOfBits) throws ModbusTransportException {
         ReadHoldingRegistersRequest request = new ReadHoldingRegistersRequest(slaveId, offset, numberOfBits);
         ReadHoldingRegistersResponse response = (ReadHoldingRegistersResponse) master.send(request);
         return response.getShortData();
@@ -82,7 +81,7 @@ public class Modbus4jReadUtils {
         System.out.println("batchRead:" + results.getValue(1));
     }
 
-    private boolean[] valueRegroup(int numberOfBits, boolean[] values) {
+    private static boolean[] valueRegroup(int numberOfBits, boolean[] values) {
         boolean[] bs = new boolean[numberOfBits];
         int temp = 1;
         for (boolean b : values) {

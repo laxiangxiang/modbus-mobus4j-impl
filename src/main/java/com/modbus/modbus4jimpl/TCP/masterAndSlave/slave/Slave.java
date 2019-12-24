@@ -4,16 +4,17 @@ import com.serotonin.modbus4j.ModbusFactory;
 import com.serotonin.modbus4j.ModbusSlaveSet;
 import com.serotonin.modbus4j.exception.ModbusInitException;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 //springboot项目实现CommandLineRunner类和@Component注解，程序启动时就加载tcp slave
 
 /**
  * todo:用 modbus poll软件连接会报错，连接不上，使用 master Java程序可以读写此slave
  */
-//@Component
+@Component
 public class Slave implements CommandLineRunner {
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         createSlave();
     }
 
